@@ -12,15 +12,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #f4f4f4;
         }
         #header {
             text-align: center;
             margin: 20px;
         }
+        #header h1 {
+            color: #007BFF; /* Colore blu per il titolo */
+        }
         #search {
             position: absolute;
             right: 20px;
             top: 20px;
+        }
+        #search input {
+            padding: 10px;
+            border: 2px solid #007BFF; /* Bordo blu per la barra di ricerca */
+            border-radius: 5px;
+            font-size: 16px;
         }
         #content {
             display: flex;
@@ -28,13 +38,22 @@
             max-width: 1200px;
             margin: 20px;
         }
-        #randomPage {
+        #randomPage, #description {
             width: 50%;
             padding: 20px;
+            box-sizing: border-box;
+        }
+        #randomPage {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         #description {
-            width: 50%;
-            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         #description p {
             margin: 0;
@@ -47,7 +66,7 @@
     </div>
 
     <div id="search">
-        <input type="text" id="searchBox" placeholder="Cerca nelle pagine..." />
+        <input type="text" id="searchBox" placeholder="Cerca nelle pagine..." oninput="searchPages()" />
     </div>
 
     <div id="content">
@@ -68,7 +87,7 @@
         // Esempio di contenuto casuale
         function loadRandomPage() {
             const pages = [
-                'page1.html', 'page2.html', 'page3.html' // Aggiungi qui i nomi delle pagine
+                'Regno dell'Est.html', 'page2.html', 'page3.html' // Aggiungi qui i nomi delle pagine
             ];
             const randomPage = pages[Math.floor(Math.random() * pages.length)];
             fetch(randomPage)
@@ -79,6 +98,33 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadRandomPage);
+
+        // Funzione di ricerca delle pagine
+        function searchPages() {
+            const query = document.getElementById('searchBox').value.toLowerCase();
+            const pages = [
+                { name: 'Regno dell'Est', url: 'Regno dell'Est.html' },
+                { name: 'Pagina 2', url: 'page2.html' },
+                { name: 'Pagina 3', url: 'page3.html' }
+            ];
+            const results = pages.filter(page => page.name.toLowerCase().includes(query));
+            // Visualizza i risultati della ricerca
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = ''; // Pulisce i risultati precedenti
+            if (results.length > 0) {
+                results.forEach(page => {
+                    const link = document.createElement('a');
+                    link.href = page.url;
+                    link.textContent = page.name;
+                    link.style.display = 'block';
+                    resultsContainer.appendChild(link);
+                });
+            } else {
+                resultsContainer.innerHTML = 'Nessun risultato trovato.';
+            }
+        }
     </script>
+
+    <div id="searchResults" style="margin-top: 20px; text-align: center; width: 100%; max-width: 1200px;"></div>
 </body>
 </html>
