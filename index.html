@@ -3,155 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki Home Page</title>
+    <title>Wiki</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: row;
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
+        #search {
+            margin: 10px;
         }
-        .search-bar {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-        .search-bar input[type="text"] {
-            padding: 5px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            width: 200px;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section h2 {
-            color: #333;
-        }
-        .wiki-description {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .split {
-            display: flex;
-            gap: 20px;
-        }
-        .split > div {
-            flex: 1;
+        #randomPage, #recentPages {
+            width: 50%;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
-            background-color: #fff;
-            height: 300px;
-            overflow-y: auto;
         }
-        .split .random-page {
-            background-color: #f9f9f9;
-        }
-        .split .recent-pages ul {
+        #recentPages ul {
             list-style-type: none;
             padding: 0;
         }
-        .split .recent-pages li {
-            margin-bottom: 10px;
-        }
-        .split .recent-pages li time {
-            color: #888;
-            font-size: 0.9em;
+        #recentPages li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Wiki Home Page</h1>
-    <div class="search-bar">
-        <input type="text" id="searchBox" placeholder="Cerca fra le pagine...">
-    </div>
-</header>
-
-<div class="container">
-
-    <div class="section">
-        <h2>Titolo della Wiki</h2>
-        <p class="wiki-description">
-            Benvenuto nella nostra Wiki, un portale ricco di informazioni e risorse. Naviga tra le pagine, scopri nuovi contenuti e contribuisci con le tue conoscenze!
-        </p>
+    <div id="search">
+        <input type="text" id="searchBox" placeholder="Cerca nelle pagine..." />
     </div>
 
-    <div class="split">
-        <div class="random-page">
-            <h3>Scopri una Pagina Casuale</h3>
-            <p id="randomPageContent">Loading...</p>
-        </div>
-        <div class="recent-pages">
-            <h3>Ultime Pagine Inserite</h3>
-            <ul id="recentPagesList">
-                <li>Loading...</li>
-            </ul>
+    <div id="randomPage">
+        <h2>Pagina a Caso</h2>
+        <div id="randomPageContent">
+            <!-- Contenuto della pagina a caso qui -->
         </div>
     </div>
 
-</div>
+    <div id="recentPages">
+        <h2>Ultime Pagine</h2>
+        <ul>
+            <!-- Lista delle ultime pagine -->
+            <li><a href="Regno dell'Est.html">Pagina 1</a></li>
+        </ul>
+    </div>
 
-<script>
-    // Funzione per caricare una parte di una pagina casuale
-    function loadRandomPage() {
-        // Sostituisci con la logica per ottenere il contenuto di una pagina casuale
-        document.getElementById('randomPageContent').textContent = getRandomPageExcerpt();
-    }
+    <script>
+        // Esempio di contenuto casuale
+        function loadRandomPage() {
+            const pages = [
+                'page1.html', 'page2.html', 'page3.html'
+            ];
+            const randomPage = pages[Math.floor(Math.random() * pages.length)];
+            fetch(randomPage)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('randomPageContent').innerHTML = text.substring(0, 200) + '...'; // Mostra solo un estratto
+                });
+        }
 
-    // Funzione per caricare la lista delle ultime pagine inserite
-    function loadRecentPages() {
-        // Sostituisci con la logica per ottenere le ultime pagine
-        const recentPages = getRecentPages();
-        const recentPagesList = document.getElementById('recentPagesList');
-        recentPagesList.innerHTML = '';
-
-        recentPages.forEach(page => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<strong>${page.title}</strong> <br> <time>${page.timeAgo}</time>`;
-            recentPagesList.appendChild(listItem);
-        });
-    }
-
-    // Funzione placeholder per ottenere un estratto di una pagina casuale
-    function getRandomPageExcerpt() {
-        // Inserisci qui la logica per ottenere un estratto di una pagina casuale
-        return "Estratto della pagina casuale..."; // Sostituisci con il vero estratto
-    }
-
-    // Funzione placeholder per ottenere le ultime pagine
-    function getRecentPages() {
-        // Inserisci qui la logica per ottenere le ultime pagine
-        return [
-            { title: "Pagina 1", timeAgo: "5 minuti fa" },
-            { title: "Pagina 2", timeAgo: "1 ora fa" },
-            { title: "Pagina 3", timeAgo: "2 ore fa" }
-        ]; // Sostituisci con i veri dati
-    }
-
-    // Caricamento iniziale dei dati
-    document.addEventListener('DOMContentLoaded', function() {
-        loadRandomPage();
-        loadRecentPages();
-    });
-</script>
-
+        document.addEventListener('DOMContentLoaded', loadRandomPage);
+    </script>
 </body>
 </html>
