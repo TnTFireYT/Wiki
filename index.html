@@ -7,52 +7,68 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: row;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #header {
+            text-align: center;
+            margin: 20px;
         }
         #search {
-            margin: 10px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
         }
-        #randomPage, #recentPages {
+        #content {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px;
+        }
+        #randomPage {
             width: 50%;
-            padding: 10px;
+            padding: 20px;
         }
-        #recentPages ul {
-            list-style-type: none;
-            padding: 0;
+        #description {
+            width: 50%;
+            padding: 20px;
         }
-        #recentPages li {
-            margin-bottom: 5px;
+        #description p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
+    <div id="header">
+        <h1>Nome della Wiki</h1>
+    </div>
+
     <div id="search">
         <input type="text" id="searchBox" placeholder="Cerca nelle pagine..." />
     </div>
 
-    <div id="randomPage">
-        <h2>Pagina a Caso</h2>
-        <div id="randomPageContent">
-            <!-- Contenuto della pagina a caso qui -->
+    <div id="content">
+        <div id="randomPage">
+            <h2>Pagina a Caso</h2>
+            <div id="randomPageContent">
+                <!-- Contenuto della pagina a caso qui -->
+            </div>
         </div>
-    </div>
 
-    <div id="recentPages">
-        <h2>Ultime Pagine</h2>
-        <ul>
-            <!-- Lista delle ultime pagine -->
-            <li><a href="Regno dell'Est.html">Pagina 1</a></li>
-        </ul>
+        <div id="description">
+            <h2>Descrizione della Wiki</h2>
+            <p>Questa è una breve descrizione della tua wiki. Inserisci qui informazioni pertinenti sul contenuto della wiki e cosa gli utenti possono aspettarsi di trovare.</p>
+        </div>
     </div>
 
     <script>
         // Esempio di contenuto casuale
         function loadRandomPage() {
             const pages = [
-                'page1.html', 'page2.html', 'page3.html'
+                'page1.html', 'page2.html', 'page3.html' // Aggiungi qui i nomi delle pagine
             ];
             const randomPage = pages[Math.floor(Math.random() * pages.length)];
             fetch(randomPage)
