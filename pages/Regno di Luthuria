@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regno di Luthuria</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            border-bottom: 1px solid #000;
+        }
+        #container {
+            display: flex;
+        }
+        #content {
+            width: 70%;
+            padding-right: 20px;
+        }
+        #sidebar {
+            width: 30%;
+            border-left: 1px solid #ccc;
+            padding-left: 20px;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Regno di Luthuria</h1>
+
+<div id="container">
+    <div id="content">
+        <p>Il Regno di Luthuria </p>
+
+        <h2>Indice</h2>
+        <ul>
+            <li><a href="#storia">Storia</a>
+                <ul>
+                    <li><a href="#prima-fondazione">Prima fondazione</a></li>
+                    <li><a href="#seconda-fondazione">Ritorno dal mare</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 id="storia">Storia</h2>
+
+        <h3 id="prima-fondazione">Prima fondazione</h3>
+        <p>lol</p>
+
+        <!-- Aggiungi ulteriori sezioni qui -->
+    </div>
+
+    <div id="sidebar">
+        <table>
+            <tr>
+                <th colspan="2">Regno di Luthuria</th>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="path-to-image.jpg" alt="Mappa del Regno di Luthuria" style="width:100%;"></td>
+            </tr>
+            <tr>
+                <th>Nome completo</th>
+                <td>Regno Elfico Orientale di Luthuria</td>
+            </tr>
+            <tr>
+                <th>Lingue Ufficiali</th>
+                <td>Elfico Luthuriano</td>
+            </tr>
+            <tr>
+                <th>Lingue Parlate</th>
+                <td>Elfico Luthuriano, Sarniano Costale, varie lingue Listroereibiche</td>
+            </tr>
+            <tr>
+                <th>Capitale</th>
+                <td>Ealor (de iure), Bianca Torre (de facto)</td>
+            </tr>
+            <tr>
+                <th>Dipendente da</th>
+                <td>Alto Regno di Luthuria</td>
+            </tr>
+            <tr>
+                <th>Dipendenze</th>
+                <td>Principato di Imporia, Ducato di Bealinor, Ducato della Piccola Meloria, Ducato del Tridente, Regno d'Ereiba</td>
+            </tr>
+            <tr>
+                <th>Forma di Governo</th>
+                <td>Monarchia Feudale</td>
+            </tr>
+            <tr>
+                <th>Re</th>
+                <td>titolo vacante</td>
+            </tr>
+            <tr>
+                <th>Nascita</th>
+                <td>Almeno qualche secolo prima della discesa di Tsoulolt</td>
+            </tr>
+            <tr>
+                <th>Causa</th>
+                <td>Unificazione dei vari Ducati e Principati indipendenti</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
