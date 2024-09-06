@@ -112,7 +112,7 @@
         // Funzione per caricare una parte di una pagina casuale
         function loadRandomPage() {
             const pages = [
-                'Regno dell Est.html', 'page2.html', 'page3.html' // Aggiungi qui i nomi delle pagine
+                'pages/Regno dell Est.html', 'pages/Regno di Luthuria.html', 'page3.html' // Aggiungi qui i nomi delle pagine
             ];
             const randomPage = pages[Math.floor(Math.random() * pages.length)];
             fetch(randomPage)
@@ -127,7 +127,7 @@
             const query = document.getElementById('searchBox').value.toLowerCase();
             const pages = [
                 { name: 'Regno dell Est', url: 'pages/Regno dell Est.html' },
-                { name: 'Pagina 2', url: 'page2.html' },
+                { name: 'Regno di Luthuria', url: 'pages/Regno di Luthuria.html' },
                 { name: 'Pagina 3', url: 'page3.html' }
             ];
             const results = pages.filter(page => page.name.toLowerCase().includes(query));
