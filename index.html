@@ -128,8 +128,10 @@
             const pages = [
                 { name: 'Regno dell Est', url: 'pages/Regno dell Est.html' },
                 { name: 'Regno di Luthuria', url: 'pages/Regno di Luthuria.html' },
-                { name: 'Re di Luthuria', url: 'pages/re di luthuria.html' },  // Aggiunta la virgola qui
-                { name: 'Ser Eolan Redfyre', url: 'pages/Ser Eolan Redfyre.html' }
+                { name: 'Re di Luthuria', url: 'pages/re di luthuria.html' },  // Virgola qui
+                { name: 'Ser Eolan Redfyre', url: 'pages/Ser Eolan Redfyre.html' },  // Aggiunta la virgola
+                { name: 'Regno Ereiba', url: 'pages/Regno d Ereiba.html' }  // Virgola non necessaria qui
+
             ];
             const results = pages.filter(page => page.name.toLowerCase().includes(query));
             const resultsContainer = document.getElementById('searchResults');
