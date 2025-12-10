@@ -109,41 +109,44 @@
     </div>
 
     <script>
-        // Funzione per caricare una parte di una pagina casuale
+        const pages = [
+            { name: 'Regno dell Est', url: 'pages/Regno dell Est.html' },
+            { name: 'Regno di Luthuria', url: 'pages/Regno di Luthuria.html' },
+            { name: 'Re di Luthuria', url: 'pages/re di luthuria.html' },
+            { name: 'Ser Eolan Redfyre', url: 'pages/Ser Eolan Redfyre.html' },
+            { name: 'Regno d Ereiba', url: 'pages/Regno d Ereiba.html' },
+            { name: 'Regno Elfico del Nord', url: 'pages/Regno Elfico Nord.html' },
+            { name: 'Erkian I Redhammer', url: 'pages/erkian.html' },
+            { name: 'Impero della Medusa', url: 'pages/basileiatonmedousas.html' },
+            { name: 'Aeolas II Redfire', url: 'pages/aeolasiiredfire.html' },
+            { name: 'Guerra della Coalizione di Sahl', url: 'pages/Guerra della Coalizione di Sahl.html' },
+            { name: 'Alti Re degli Elfi', url: 'pages/altiredeglielfi.html' }
+        ];
+
         function loadRandomPage() {
-            const pages = [
-                'pages/Regno dell Est.html', 'pages/Regno di Luthuria.html', 'page3.html' // Aggiungi qui i nomi delle pagine
-            ];
             const randomPage = pages[Math.floor(Math.random() * pages.length)];
-            fetch(randomPage)
+            fetch(randomPage.url)
                 .then(response => response.text())
                 .then(text => {
-                    document.getElementById('randomPageContent').innerHTML = text.substring(0, 200) + '...'; // Mostra solo un estratto
+                    document.getElementById('randomPageContent').innerHTML = `
+                        <h3>${randomPage.name}</h3>
+                        <p>${text.substring(0, 200)}...</p>
+                        <p><a href="${randomPage.url}" target="_blank">Leggi di più</a></p>
+                    `;
+                })
+                .catch(err => {
+                    document.getElementById('randomPageContent').innerHTML = `<p>Errore nel caricamento della pagina casuale.</p>`;
                 });
         }
+
         function searchPages() {
             const query = document.getElementById('searchBox').value.toLowerCase();
-            const pages = [
-                { name: 'Regno dell Est', url: 'pages/Regno dell Est.html' },
-                { name: 'Regno di Luthuria', url: 'pages/Regno di Luthuria.html' },
-                { name: 'Re di Luthuria', url: 'pages/re di luthuria.html' },
-                { name: 'Ser Eolan Redfyre', url: 'pages/Ser Eolan Redfyre.html' },
-                { name: 'Regno d Ereiba', url: 'pages/Regno d Ereiba.html' },
-                { name: 'Regno Elfico del Nord', url: 'pages/Regno Elfico Nord.html' },
-                { name: 'Erkian I Redhammer', url: 'pages/erkian.html' },
-                { name: 'Impero della Medusa', url: 'pages/basileiatonmedousas.html' },
-                { name: 'Aeolas II Redfire', url: 'pages/aeolasiiredfire.html' },
-                { name: 'Guerra della Coalizione di Sahl', url: 'pages/Guerra della Coalizione di Sahl.html' },
-                { name: 'Alti Re degli Elfi', url: 'pages/altiredeglielfi.html' }
-
-
-            ];
             const results = pages.filter(page => page.name.toLowerCase().includes(query));
             const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = ''; // Pulisce i risultati precedenti
+            resultsContainer.innerHTML = '';
 
             if (query.length > 0) {
-                resultsContainer.style.display = 'block'; // Mostra il contenitore dei risultati
+                resultsContainer.style.display = 'block';
                 if (results.length > 0) {
                     results.forEach(page => {
                         const link = document.createElement('a');
@@ -155,23 +158,20 @@
                     resultsContainer.innerHTML = 'Nessun risultato trovato.';
                 }
             } else {
-                resultsContainer.style.display = 'none'; // Nasconde il contenitore se la query è vuota
+                resultsContainer.style.display = 'none';
             }
         }
 
-        // Mostra i risultati della ricerca quando il campo di ricerca è a fuoco
         function showResults() {
             document.getElementById('searchResults').style.display = 'block';
         }
 
-        // Nasconde i risultati della ricerca quando il campo di ricerca perde il fuoco
         function hideResults() {
             setTimeout(() => {
                 document.getElementById('searchResults').style.display = 'none';
             }, 100);
         }
 
-        // Carica una pagina casuale quando il documento è pronto
         document.addEventListener('DOMContentLoaded', loadRandomPage);
     </script>
 </body>
