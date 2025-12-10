@@ -124,20 +124,13 @@
         ];
 
         function loadRandomPage() {
-            const randomPage = pages[Math.floor(Math.random() * pages.length)];
-            fetch(randomPage.url)
-                .then(response => response.text())
-                .then(text => {
-                    document.getElementById('randomPageContent').innerHTML = `
-                        <h3>${randomPage.name}</h3>
-                        <p>${text.substring(0, 200)}...</p>
-                        <p><a href="${randomPage.url}" target="_blank">Leggi di più</a></p>
-                    `;
-                })
-                .catch(err => {
-                    document.getElementById('randomPageContent').innerHTML = `<p>Errore nel caricamento della pagina casuale.</p>`;
-                });
-        }
+        const randomPage = pages[Math.floor(Math.random() * pages.length)];
+        document.getElementById('randomPageContent').innerHTML = `
+            <h3><a href="${randomPage.url}" target="_blank">${randomPage.name}</a></h3>
+        `;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRandomPage);
 
         function searchPages() {
             const query = document.getElementById('searchBox').value.toLowerCase();
